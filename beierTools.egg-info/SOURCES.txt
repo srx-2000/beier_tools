@@ -1,0 +1,6 @@
+JsOperation.py
+setup.py
+beierTools.egg-info/PKG-INFO
+beierTools.egg-info/SOURCES.txt
+beierTools.egg-info/dependency_links.txt
+beierTools.egg-info/top_level.txt
