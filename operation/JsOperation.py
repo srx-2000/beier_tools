@@ -10,6 +10,8 @@ def urs(x, bit):
     @return:
     """
     x, y = ctypes.c_uint32(x).value, bit % 32
+    if y == 0:
+        return ctypes.c_uint32(x >> y).value & 0xFFFFFFFF
     return ctypes.c_uint32(x >> y).value
 
 

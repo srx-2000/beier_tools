@@ -1,6 +1,0 @@
-setup.py
-__init__.py
-.gitignore
-dist/
-build/
-beierTools.egg-info/

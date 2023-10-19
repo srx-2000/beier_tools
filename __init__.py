@@ -1,1 +1,2 @@
-from .JsOperation import *
+import encrypt
+import operation
