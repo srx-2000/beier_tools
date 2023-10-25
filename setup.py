@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='beierTools',  # 应用名（pip安装和卸载时的名字）
-    version='0.0.12',  # 当前版本
+    version='0.0.13',  # 当前版本
     author='Beier',  # 作者
     author_email='1601684622@qq.com',  # 作者邮箱
     licence='MIT License',  # 许可协议
