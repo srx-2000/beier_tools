@@ -49,14 +49,18 @@ def aes_de_bs64(code: bytes, key: str):
     return __unpad(plaintext).decode(ENCODING)
 
 
-def aes_de(code: str, key: str):
+def aes_de(code: str, key: str, vi=None):
     """
     这里传入的code是待解密的字符串
+    @param vi: 随机初始化，如果vi不为空则默认使用CBC模式，字符串
     @param code: 待解密文本
     @param key: 秘钥
     @return:
     """
-    cipher = AES.new(key.encode(ENCODING), AES.MODE_ECB)
+    if vi:
+        cipher = AES.new(key.encode(ENCODING), AES.MODE_CBC, vi.encode(ENCODING))
+    else:
+        cipher = AES.new(key.encode(ENCODING), AES.MODE_ECB)
     code = base64.b64decode(code)
     plaintext = cipher.decrypt(code)
     return __unpad(plaintext.decode(ENCODING))
@@ -67,13 +71,12 @@ def aes_en(code: str, key: str, vi=None):
     aes加密
     @param code: 待加密文本
     @param key: 秘钥
-    @param vi: 随机初始化
+    @param vi: 随机初始化，如果vi不为空则默认使用CBC模式，字符串
     @return:
     """
     if vi:
-        cipher = AES.new(key.encode(ENCODING), AES.MODE_ECB, vi.encode(ENCODING))
+        cipher = AES.new(key.encode(ENCODING), AES.MODE_CBC, vi.encode(ENCODING))
     else:
-        print(len(key.encode(ENCODING)))
         cipher = AES.new(key.encode(ENCODING), AES.MODE_ECB)
     count = len(code.encode(ENCODING))
     add = AES.block_size - (count % AES.block_size)
